@@ -1,6 +1,8 @@
 import 'package:api_crud/model/mote_forlisting.dart';
 import 'package:flutter/material.dart';
 
+import 'note_modify.dart';
+
 class NoteList extends StatelessWidget {
 
 final note = [
@@ -35,7 +37,9 @@ String formateDateTime(DateTime dateTime){
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>NoteModify()));
+        },
         child: Icon(Icons.add),
       ),
       body: ListView.separated(
