@@ -1,6 +1,32 @@
+import 'package:api_crud/model/mote_forlisting.dart';
 import 'package:flutter/material.dart';
 
 class NoteList extends StatelessWidget {
+
+final note = [
+  NoteForListing(
+    noteID: "1",
+    noteTitle: "Note1",
+    createDateTime: DateTime.now(),
+    latestEditDateTime: DateTime.now(),
+  ),
+  NoteForListing(
+    noteID: "2",
+    noteTitle: "Note2",
+    createDateTime: DateTime.now(),
+    latestEditDateTime: DateTime.now(),
+  ),
+  NoteForListing(
+    noteID: "3",
+    noteTitle: "Note3",
+    createDateTime: DateTime.now(),
+    latestEditDateTime: DateTime.now(),
+  ),
+];
+String formateDateTime(DateTime dateTime){
+  return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,11 +40,11 @@ class NoteList extends StatelessWidget {
       ),
       body: ListView.separated(
         separatorBuilder: (_,__)=> Divider(height: 1,color: Colors.green),
-        itemCount: 30,
+        itemCount: note.length,
         itemBuilder: (_,index){
           return ListTile(
-            title: Text("Hello"),
-            subtitle: Text("Last Edit on 21/2/2021"),
+            title: Text(note[index].noteTitle),
+            subtitle: Text("Last Edit on ${formateDateTime(note[index].latestEditDateTime)}"),
           );
         },
       ),
